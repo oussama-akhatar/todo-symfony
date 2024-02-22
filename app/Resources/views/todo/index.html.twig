@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Todos{% endblock %}
+
+{% block body %}
+<h1>TODO INDEX</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Todo</th>
+      <th scope="col">Due Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for todo in todos %}
+    <tr>
+      <th scope="row">{{todo.id}}</th>
+      <td scope="row">{{todo.name}}</td>
+      <td scope="row">{{todo.dueDate | date('F j, Y, g:i a')}}</td>
+      <td scope="row">
+        <a href="/todo/edit/{{todo.id}}" class="btn btn-success">Edit</a>
+        <a href="/todo/details/{{todo.id}}" class="btn btn-warning">View</a>
+        <a href="/todo/delete/{{todo.id}}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
